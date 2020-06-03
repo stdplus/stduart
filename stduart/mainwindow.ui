@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QMdiArea" name="mdiArea">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>200</width>
+      <height>160</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>连接</string>
+    </property>
+    <addaction name="actionnew"/>
+    <addaction name="actionupdate_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="actionabout"/>
+    <addaction name="actionupdate"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>视图</string>
+    </property>
+    <addaction name="actionview_tab"/>
+    <addaction name="actionview_child"/>
+    <addaction name="separator"/>
+    <addaction name="actioncascadeSubWindows"/>
+    <addaction name="actiontileSubWindows"/>
+    <addaction name="separator"/>
+    <addaction name="actioncloseAllSubWindows"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>数据</string>
+    </property>
+    <addaction name="actionexport"/>
+    <addaction name="actionanalysis"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>系统</string>
+    </property>
+    <addaction name="actiongenert"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionabout">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="actionupdate">
+   <property name="text">
+    <string>检查更新</string>
+   </property>
+  </action>
+  <action name="actionnew">
+   <property name="text">
+    <string>新建连接</string>
+   </property>
+  </action>
+  <action name="actionview_tab">
+   <property name="text">
+    <string>TAB页模式</string>
+   </property>
+  </action>
+  <action name="actionview_child">
+   <property name="text">
+    <string>子窗口模式</string>
+   </property>
+  </action>
+  <action name="actioncascadeSubWindows">
+   <property name="text">
+    <string>级连</string>
+   </property>
+  </action>
+  <action name="actiontileSubWindows">
+   <property name="text">
+    <string>平铺</string>
+   </property>
+  </action>
+  <action name="actioncloseAllSubWindows">
+   <property name="text">
+    <string>关闭所有</string>
+   </property>
+  </action>
+  <action name="actionexport">
+   <property name="text">
+    <string>导出</string>
+   </property>
+  </action>
+  <action name="actionanalysis">
+   <property name="text">
+    <string>分析..</string>
+   </property>
+  </action>
+  <action name="actiongenert">
+   <property name="text">
+    <string>首选项</string>
+   </property>
+  </action>
+  <action name="actionupdate_2">
+   <property name="text">
+    <string>刷新系统串口</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
