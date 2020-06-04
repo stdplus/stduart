@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../stduart/serial_obj.h"
+#include "../../../work/stduart/stduart/serial_obj.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../stduart/serial_setting.h"
+#include "../../../work/stduart/stduart/serial_setting.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_setting_t {
-    QByteArrayData data[19];
-    char stringdata0[312];
+    QByteArrayData data[20];
+    char stringdata0[336];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,8 @@ QT_MOC_LITERAL(14, 214, 4), // "arg1"
 QT_MOC_LITERAL(15, 219, 26), // "on_checkBox_2_stateChanged"
 QT_MOC_LITERAL(16, 246, 19), // "on_checkBox_clicked"
 QT_MOC_LITERAL(17, 266, 21), // "on_checkBox_2_clicked"
-QT_MOC_LITERAL(18, 288, 23) // "on_pushButton_5_clicked"
+QT_MOC_LITERAL(18, 288, 23), // "on_pushButton_5_clicked"
+QT_MOC_LITERAL(19, 312, 23) // "on_pushButton_2_clicked"
 
     },
     "serial_setting\0show_message\0\0str\0"
@@ -62,7 +63,7 @@ QT_MOC_LITERAL(18, 288, 23) // "on_pushButton_5_clicked"
     "on_checkBox_stateChanged\0arg1\0"
     "on_checkBox_2_stateChanged\0"
     "on_checkBox_clicked\0on_checkBox_2_clicked\0"
-    "on_pushButton_5_clicked"
+    "on_pushButton_5_clicked\0on_pushButton_2_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +73,7 @@ static const uint qt_meta_data_serial_setting[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,20 +81,22 @@ static const uint qt_meta_data_serial_setting[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   74,    2, 0x06 /* Public */,
-       4,    1,   77,    2, 0x06 /* Public */,
-       6,    1,   80,    2, 0x06 /* Public */,
+       1,    1,   84,    2, 0x06 /* Public */,
+       4,    1,   87,    2, 0x06 /* Public */,
+       6,    1,   90,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   83,    2, 0x08 /* Private */,
-       9,    1,   84,    2, 0x08 /* Private */,
-      11,    1,   87,    2, 0x08 /* Private */,
-      12,    0,   90,    2, 0x08 /* Private */,
-      13,    1,   91,    2, 0x08 /* Private */,
-      15,    1,   94,    2, 0x08 /* Private */,
-      16,    0,   97,    2, 0x08 /* Private */,
-      17,    0,   98,    2, 0x08 /* Private */,
-      18,    0,   99,    2, 0x08 /* Private */,
+       8,    0,   93,    2, 0x08 /* Private */,
+       9,    1,   94,    2, 0x08 /* Private */,
+      11,    1,   97,    2, 0x08 /* Private */,
+      12,    0,  100,    2, 0x08 /* Private */,
+      13,    1,  101,    2, 0x08 /* Private */,
+      15,    1,  104,    2, 0x08 /* Private */,
+      16,    0,  107,    2, 0x08 /* Private */,
+      17,    0,  108,    2, 0x08 /* Private */,
+      18,    0,  109,    2, 0x08 /* Private */,
+      19,    0,  110,    2, 0x08 /* Private */,
+       9,    1,  111,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -110,6 +113,8 @@ static const uint qt_meta_data_serial_setting[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   14,
 
        0        // eod
 };
@@ -132,6 +137,8 @@ void serial_setting::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 9: _t->on_checkBox_clicked(); break;
         case 10: _t->on_checkBox_2_clicked(); break;
         case 11: _t->on_pushButton_5_clicked(); break;
+        case 12: _t->on_pushButton_2_clicked(); break;
+        case 13: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -189,13 +196,13 @@ int serial_setting::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }

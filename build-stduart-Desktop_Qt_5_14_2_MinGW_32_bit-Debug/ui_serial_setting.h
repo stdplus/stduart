@@ -29,16 +29,16 @@ class Ui_serial_setting
 public:
     QToolBox *toolBox;
     QWidget *page;
+    QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_2;
-    QComboBox *comboBox_2;
     QComboBox *comboBox;
+    QPushButton *pushButton_2;
     QPushButton *pushButton;
-    QWidget *widget;
+    QComboBox *comboBox_2;
+    QTextBrowser *textBrowser;
+    QPushButton *pushButton_3;
     QLabel *label;
     QLabel *label_2;
-    QTextBrowser *textBrowser;
     QWidget *page_3;
     QLabel *label_3;
     QLabel *label_4;
@@ -66,92 +66,106 @@ public:
     {
         if (serial_setting->objectName().isEmpty())
             serial_setting->setObjectName(QString::fromUtf8("serial_setting"));
-        serial_setting->resize(393, 666);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        serial_setting->resize(862, 666);
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(serial_setting->sizePolicy().hasHeightForWidth());
         serial_setting->setSizePolicy(sizePolicy);
         toolBox = new QToolBox(serial_setting);
         toolBox->setObjectName(QString::fromUtf8("toolBox"));
-        toolBox->setGeometry(QRect(20, 50, 327, 431));
+        toolBox->setGeometry(QRect(100, 20, 361, 571));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(toolBox->sizePolicy().hasHeightForWidth());
+        toolBox->setSizePolicy(sizePolicy1);
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
-        page->setGeometry(QRect(0, 0, 327, 327));
-        gridLayout = new QGridLayout(page);
+        page->setEnabled(true);
+        page->setGeometry(QRect(0, 0, 361, 467));
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(page->sizePolicy().hasHeightForWidth());
+        page->setSizePolicy(sizePolicy2);
+        page->setInputMethodHints(Qt::ImhNone);
+        gridLayoutWidget = new QWidget(page);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(40, 40, 196, 252));
+        gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
-        gridLayout->setHorizontalSpacing(6);
-        gridLayout->setVerticalSpacing(15);
-        gridLayout->setContentsMargins(-1, -1, -1, 9);
-        pushButton_3 = new QPushButton(page);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        gridLayout->addWidget(pushButton_3, 0, 3, 1, 1);
-
-        pushButton_2 = new QPushButton(page);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        gridLayout->addWidget(pushButton_2, 0, 2, 1, 1);
-
-        comboBox_2 = new QComboBox(page);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setEditable(false);
-
-        gridLayout->addWidget(comboBox_2, 2, 1, 1, 3);
-
-        comboBox = new QComboBox(page);
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        comboBox = new QComboBox(gridLayoutWidget);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
+        comboBox->setSizePolicy(sizePolicy3);
 
         gridLayout->addWidget(comboBox, 0, 1, 1, 1);
 
-        pushButton = new QPushButton(page);
+        pushButton_2 = new QPushButton(gridLayoutWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy4);
+
+        gridLayout->addWidget(pushButton_2, 0, 2, 1, 1);
+
+        pushButton = new QPushButton(gridLayoutWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy2);
 
-        gridLayout->addWidget(pushButton, 3, 0, 1, 4);
+        gridLayout->addWidget(pushButton, 2, 2, 1, 1);
 
-        widget = new QWidget(page);
-        widget->setObjectName(QString::fromUtf8("widget"));
+        comboBox_2 = new QComboBox(gridLayoutWidget);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        sizePolicy3.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
+        comboBox_2->setSizePolicy(sizePolicy3);
+        comboBox_2->setEditable(false);
 
-        gridLayout->addWidget(widget, 4, 0, 1, 4);
+        gridLayout->addWidget(comboBox_2, 1, 1, 1, 1);
 
-        label = new QLabel(page);
+        textBrowser = new QTextBrowser(gridLayoutWidget);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(textBrowser->sizePolicy().hasHeightForWidth());
+        textBrowser->setSizePolicy(sizePolicy5);
+
+        gridLayout->addWidget(textBrowser, 2, 1, 1, 1);
+
+        pushButton_3 = new QPushButton(gridLayoutWidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        gridLayout->addWidget(pushButton_3, 1, 2, 1, 1);
+
+        label = new QLabel(gridLayoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
 
-        label_2 = new QLabel(page);
+        label_2 = new QLabel(gridLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        gridLayout->addWidget(label_2, 2, 0, 1, 1);
-
-        textBrowser = new QTextBrowser(page);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(textBrowser->sizePolicy().hasHeightForWidth());
-        textBrowser->setSizePolicy(sizePolicy2);
-
-        gridLayout->addWidget(textBrowser, 1, 1, 1, 3);
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
 
         gridLayout->setRowStretch(0, 1);
         gridLayout->setRowStretch(1, 1);
         gridLayout->setRowStretch(2, 1);
-        gridLayout->setRowStretch(3, 1);
-        gridLayout->setRowStretch(4, 1);
-        gridLayout->setColumnStretch(0, 1);
-        gridLayout->setColumnStretch(1, 2);
-        gridLayout->setColumnStretch(2, 1);
+        gridLayout->setRowStretch(3, 2);
+        gridLayout->setRowStretch(4, 5);
         toolBox->addItem(page, QString::fromUtf8("\345\237\272\346\234\254\351\205\215\347\275\256"));
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
-        page_3->setGeometry(QRect(0, 0, 327, 327));
+        page_3->setGeometry(QRect(0, 0, 361, 467));
         label_3 = new QLabel(page_3);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(50, 30, 54, 12));
@@ -179,7 +193,7 @@ public:
         toolBox->addItem(page_3, QString::fromUtf8("\351\253\230\347\272\247\351\205\215\347\275\256"));
         page_4 = new QWidget();
         page_4->setObjectName(QString::fromUtf8("page_4"));
-        page_4->setGeometry(QRect(0, 0, 327, 327));
+        page_4->setGeometry(QRect(0, 0, 361, 467));
         checkBox = new QCheckBox(page_4);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
         checkBox->setGeometry(QRect(60, 30, 71, 16));
@@ -216,12 +230,12 @@ public:
         toolBox->addItem(page_4, QString::fromUtf8("\346\216\245\346\224\266\345\214\272"));
         page_2 = new QWidget();
         page_2->setObjectName(QString::fromUtf8("page_2"));
-        page_2->setGeometry(QRect(0, 0, 327, 327));
+        page_2->setGeometry(QRect(0, 0, 361, 467));
         toolBox->addItem(page_2, QString::fromUtf8("\345\217\221\351\200\201\345\214\272"));
 
         retranslateUi(serial_setting);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(serial_setting);
@@ -230,9 +244,9 @@ public:
     void retranslateUi(QWidget *serial_setting)
     {
         serial_setting->setWindowTitle(QCoreApplication::translate("serial_setting", "Form", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("serial_setting", "\351\251\261\345\212\250\345\256\211\350\243\205", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("serial_setting", "<>", nullptr));
+        pushButton_2->setText(QString());
         pushButton->setText(QCoreApplication::translate("serial_setting", "\346\211\223\345\274\200\344\270\262\345\217\243", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("serial_setting", "\351\251\261\345\212\250\345\256\211\350\243\205", nullptr));
         label->setText(QCoreApplication::translate("serial_setting", "\344\270\262\345\217\243\345\217\267", nullptr));
         label_2->setText(QCoreApplication::translate("serial_setting", "\346\263\242\347\211\271\347\216\207", nullptr));
         toolBox->setItemText(toolBox->indexOf(page), QCoreApplication::translate("serial_setting", "\345\237\272\346\234\254\351\205\215\347\275\256", nullptr));

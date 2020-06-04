@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,16 +18,12 @@ QT_BEGIN_NAMESPACE
 class Ui_serial_obj
 {
 public:
-    QTextBrowser *textBrowser;
 
     void setupUi(QWidget *serial_obj)
     {
         if (serial_obj->objectName().isEmpty())
             serial_obj->setObjectName(QString::fromUtf8("serial_obj"));
         serial_obj->resize(461, 486);
-        textBrowser = new QTextBrowser(serial_obj);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(120, 140, 256, 192));
 
         retranslateUi(serial_obj);
 
