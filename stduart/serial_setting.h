@@ -105,6 +105,8 @@ private slots:
 
     void on_pushButton_11_clicked();
 
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
 private:
 
     bool is_uart_open;

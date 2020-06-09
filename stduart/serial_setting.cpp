@@ -500,6 +500,7 @@ void serial_setting::on_pushButton_11_clicked()
     model->setHorizontalHeaderItem(2, new QStandardItem("大小"));
 
 
+
     for(int i=0; i<files.length(); i++)
     {
         QFileInfo info(uart_set.log_dir + "/" +   files[i]);
@@ -510,5 +511,11 @@ void serial_setting::on_pushButton_11_clicked()
 
         model->setItem(i, 1 ,new QStandardItem(tmp.toString("yyyy.MM.dd hh:mm:ss.zzz")) );
         model->setItem(i, 2, new QStandardItem( QString::number( info.size(), 10) ) );
+
     }
+}
+
+void serial_setting::on_tableView_doubleClicked(const QModelIndex &index)
+{
+
 }

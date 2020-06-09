@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+
+
+
     QDesktopWidget* desktopWidget = QApplication::desktop();
 
 
