@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../work/stduart/stduart/serial_obj.h"
+#include "../../stduart/serial_obj.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_obj_t {
-    QByteArrayData data[16];
-    char stringdata0[193];
+    QByteArrayData data[20];
+    char stringdata0[258];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,14 +47,20 @@ QT_MOC_LITERAL(11, 93, 15), // "on_action_pulse"
 QT_MOC_LITERAL(12, 109, 15), // "on_action_clear"
 QT_MOC_LITERAL(13, 125, 13), // "on_action_top"
 QT_MOC_LITERAL(14, 139, 16), // "on_action_bottom"
-QT_MOC_LITERAL(15, 156, 36) // "on_recvbrowser_cursorPosition..."
+QT_MOC_LITERAL(15, 156, 13), // "on_action_hex"
+QT_MOC_LITERAL(16, 170, 15), // "on_action_ascii"
+QT_MOC_LITERAL(17, 186, 36), // "on_recvbrowser_cursorPosition..."
+QT_MOC_LITERAL(18, 223, 16), // "on_action_zoomin"
+QT_MOC_LITERAL(19, 240, 17) // "on_action_zoomout"
 
     },
     "serial_obj\0objmessage\0\0str\0statusbar_fix\0"
     "v\0sendmessage\0recv\0arr\0setting_charged\0"
     "recv_timeout\0on_action_pulse\0"
     "on_action_clear\0on_action_top\0"
-    "on_action_bottom\0on_recvbrowser_cursorPositionChanged"
+    "on_action_bottom\0on_action_hex\0"
+    "on_action_ascii\0on_recvbrowser_cursorPositionChanged\0"
+    "on_action_zoomin\0on_action_zoomout"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +70,7 @@ static const uint qt_meta_data_serial_obj[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,19 +78,23 @@ static const uint qt_meta_data_serial_obj[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   69,    2, 0x06 /* Public */,
-       4,    1,   72,    2, 0x06 /* Public */,
+       1,    1,   89,    2, 0x06 /* Public */,
+       4,    1,   92,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   75,    2, 0x0a /* Public */,
-       7,    1,   78,    2, 0x0a /* Public */,
-       9,    1,   81,    2, 0x0a /* Public */,
-      10,    0,   84,    2, 0x08 /* Private */,
-      11,    0,   85,    2, 0x08 /* Private */,
-      12,    0,   86,    2, 0x08 /* Private */,
-      13,    0,   87,    2, 0x08 /* Private */,
-      14,    0,   88,    2, 0x08 /* Private */,
-      15,    0,   89,    2, 0x08 /* Private */,
+       6,    1,   95,    2, 0x0a /* Public */,
+       7,    1,   98,    2, 0x0a /* Public */,
+       9,    1,  101,    2, 0x0a /* Public */,
+      10,    0,  104,    2, 0x08 /* Private */,
+      11,    0,  105,    2, 0x08 /* Private */,
+      12,    0,  106,    2, 0x08 /* Private */,
+      13,    0,  107,    2, 0x08 /* Private */,
+      14,    0,  108,    2, 0x08 /* Private */,
+      15,    0,  109,    2, 0x08 /* Private */,
+      16,    0,  110,    2, 0x08 /* Private */,
+      17,    0,  111,    2, 0x08 /* Private */,
+      18,    0,  112,    2, 0x08 /* Private */,
+      19,    0,  113,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -94,6 +104,10 @@ static const uint qt_meta_data_serial_obj[] = {
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QByteArray,    8,
     QMetaType::Void, QMetaType::QVariant,    2,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -120,7 +134,11 @@ void serial_obj::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->on_action_clear(); break;
         case 8: _t->on_action_top(); break;
         case 9: _t->on_action_bottom(); break;
-        case 10: _t->on_recvbrowser_cursorPositionChanged(); break;
+        case 10: _t->on_action_hex(); break;
+        case 11: _t->on_action_ascii(); break;
+        case 12: _t->on_recvbrowser_cursorPositionChanged(); break;
+        case 13: _t->on_action_zoomin(); break;
+        case 14: _t->on_action_zoomout(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -171,13 +189,13 @@ int serial_obj::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 15)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 15;
     }
     return _id;
 }

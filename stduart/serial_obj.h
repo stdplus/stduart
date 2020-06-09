@@ -43,7 +43,11 @@ private slots:
     void on_action_clear();
     void on_action_top();
     void on_action_bottom();
+    void on_action_hex();
+    void on_action_ascii();
     void on_recvbrowser_cursorPositionChanged();
+    void on_action_zoomin();
+    void on_action_zoomout();
 
 public:
     explicit serial_obj(QWidget *parent = nullptr);
@@ -56,6 +60,10 @@ private:
     QAction *actionPulse;
     QAction *actionTop;
     QAction *actionBottom;
+    QAction *actionHex;
+    QAction *actionAscii;
+    QAction *actionZoomin;
+    QAction *actionZoomout;
 
     bool is_recv_pulse;
     QByteArray recv_buf;
@@ -66,6 +74,9 @@ private:
     QTimer *recv_timer;
     QByteArray recv_frame;
     qint64 recv_frame_count;
+
+
+    void disp_info(void);
 };
 
 #endif // SERIAL_OBJ_H

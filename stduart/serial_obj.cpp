@@ -8,8 +8,12 @@ serial_obj::serial_obj(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::serial_obj)
 {
-    ui->setupUi(this);
 
+
+
+
+
+    ui->setupUi(this);
 
 
 
@@ -31,9 +35,7 @@ serial_obj::serial_obj(QWidget *parent) :
     QSplitter *splitterAreaRecv = new QSplitter(Qt::Horizontal, splitterRight);
 
     recv_browser = new QTextBrowser(splitterAreaRecv);
-    recv_browser->setAlignment(Qt::AlignCenter);
-    recv_browser->setText("aaaaaaaaaaa\nbbbbbbbbbbb\ncccccccc\n");
-
+    recv_browser->setAlignment(Qt::AlignLeft);
 
     recv_browser_hex = new QTextBrowser(splitterAreaRecv);
 
@@ -55,15 +57,41 @@ serial_obj::serial_obj(QWidget *parent) :
     actionBottom->setIcon(QIcon("res/bottom.jpg"));
 
 
+    actionHex = new QAction;
+    actionHex->setText("Hex");
+    actionHex->setIcon(QIcon("res/h.jpg"));
+
+
+    actionAscii = new QAction;
+    actionAscii->setText("Ascii");
+    actionAscii->setIcon(QIcon("res/ascii.jpg"));
+
+
+    actionZoomin = new QAction;
+    actionZoomin->setText("zoomin");
+    actionZoomin->setIcon(QIcon("res/zoomin.jpg"));
+
+    actionZoomout = new QAction;
+    actionZoomout->setText("zoomout");
+    actionZoomout->setIcon(QIcon("res/zoomout.jpg"));
+
     toolbar->addAction(actionRecvClear );
     toolbar->addAction(actionPulse );
     toolbar->addAction(actionTop );
     toolbar->addAction(actionBottom );
+    toolbar->addAction(actionAscii );
+    toolbar->addAction(actionHex );
+    toolbar->addAction(actionZoomin );
+    toolbar->addAction(actionZoomout );
 
     connect(actionRecvClear, &QAction::triggered, this, &serial_obj::on_action_clear);
     connect(actionPulse, &QAction::triggered, this, &serial_obj::on_action_pulse);
     connect(actionTop, &QAction::triggered, this, &serial_obj::on_action_top);
     connect(actionBottom, &QAction::triggered, this, &serial_obj::on_action_bottom);
+    connect(actionHex, &QAction::triggered, this, &serial_obj::on_action_hex);
+    connect(actionAscii, &QAction::triggered, this, &serial_obj::on_action_ascii);
+    connect(actionZoomin, &QAction::triggered, this, &serial_obj::on_action_zoomin);
+    connect(actionZoomout, &QAction::triggered, this, &serial_obj::on_action_zoomout);
 
     QTextEdit *textBottom = new QTextEdit(QObject::tr("底部部件"),splitterRight);
     textBottom->setAlignment(Qt::AlignCenter);
@@ -98,12 +126,28 @@ serial_obj::serial_obj(QWidget *parent) :
     connect(recv_browser, &QTextEdit::cursorPositionChanged, this, &serial_obj::on_recvbrowser_cursorPositionChanged);
     recv_frame_count = 0;
     is_recv_pulse = false;
+
+
+    uart_set.recv_set.color = QColor(0,85,255);
+    uart_set.recv_set.timestamp_color = QColor(113,113,113);
+
+    recv_browser->show();
+    recv_browser_hex->hide();
 }
 
 //接收区控件鼠标移动
 void serial_obj::on_recvbrowser_cursorPositionChanged()
 {
 
+}
+
+void serial_obj::on_action_zoomin()
+{
+    recv_browser->zoomIn(1);
+}
+void serial_obj::on_action_zoomout()
+{
+recv_browser->zoomOut(1);
 }
 
 void serial_obj::on_action_top()
@@ -116,6 +160,25 @@ void serial_obj::on_action_bottom()
 
 }
 
+void serial_obj::on_action_ascii()
+{
+    uart_set.recv_set.is_ascii =!uart_set.recv_set.is_ascii;
+
+    QVariant v;
+    v.setValue(uart_set);
+    setting_charged(v);
+
+}
+void serial_obj::on_action_hex()
+{
+    uart_set.recv_set.is_hex =!uart_set.recv_set.is_hex;
+
+    QVariant v;
+    v.setValue(uart_set);
+    setting_charged(v);
+
+}
+
 void serial_obj::on_action_clear()
 {
     recv_buf.clear();
@@ -124,6 +187,15 @@ void serial_obj::on_action_clear()
 
     recv_browser->clear();
     recv_browser_hex->clear();
+
+    recv_frame_count = 0;
+    QVariant v;
+    struct statusbar_fix value_fix;
+    value_fix.recv_buf_size = recv_buf.length();
+    value_fix.recv_frames = recv_frame_count;
+
+    v.setValue(value_fix);
+    emit statusbar_fix(v);
 }
 
 void serial_obj::on_action_pulse()
@@ -141,22 +213,16 @@ void serial_obj::on_action_pulse()
     }
 }
 
-void serial_obj::recv_timeout()
+#include <QFile>
+void serial_obj::disp_info()
 {
-    recv_timer->stop();
+    QString ascii_buf;
+    QString hex_buf;
 
     if(is_recv_pulse){
         recv_frame.clear();
         return;
     }
-
-
-    QDateTime current_date_time =QDateTime::currentDateTime();
-    QString current_date =current_date_time.toString("yyyy.MM.dd hh:mm:ss.zzz ddd");
-
-
-
-    recv_browser->append("["+current_date + "]"+recv_frame);
 
     QString ret(recv_frame.toHex().toUpper());
     int len = ret.length()/2;
@@ -164,7 +230,70 @@ void serial_obj::recv_timeout()
     {
         ret.insert(2*i+i-1," ");
     }
-    recv_browser_hex->append("["+current_date + "]"+ret);
+    ret.append(" ");
+    recv_browser->moveCursor(QTextCursor::End);
+    recv_browser_hex->moveCursor(QTextCursor::End);
+
+    recv_browser->setTextColor(uart_set.recv_set.timestamp_color);
+    recv_browser_hex->setTextColor(uart_set.recv_set.timestamp_color);
+    if(uart_set.recv_set.is_sn){
+
+        ascii_buf = "["+
+                QString::number(uart_set.recv_set.sn, 10) +
+                 "]";
+
+        hex_buf = "["+
+                QString::number(uart_set.recv_set.sn, 10) +
+                "]";
+        recv_browser->insertPlainText(ascii_buf);
+        recv_browser_hex->insertPlainText(hex_buf);
+
+    }
+
+    if(uart_set.recv_set.is_timestamp){
+        QDateTime current_date_time =QDateTime::currentDateTime();
+        QString current_date =current_date_time.toString(uart_set.recv_set.timestamp_format);
+
+        ascii_buf += "["+current_date + "]";
+        hex_buf += "["+current_date + "]";
+
+        recv_browser->insertPlainText("["+current_date + "]");
+        recv_browser_hex->insertPlainText("["+current_date + "]");
+    }
+
+    recv_browser->setTextColor(uart_set.recv_set.color);
+    recv_browser_hex->setTextColor(uart_set.recv_set.color);
+
+    ascii_buf += recv_frame;
+    hex_buf += ret;
+    recv_browser->insertPlainText(recv_frame);
+    recv_browser_hex->insertPlainText(ret);
+
+
+
+    if(uart_set.recv_set.is_swap){
+        ascii_buf += "\r\n";
+        hex_buf += "\r\n";
+        recv_browser->insertPlainText("\r\n");
+        recv_browser_hex->insertPlainText("\r\n");
+    }
+
+    if(uart_set.log_mode == 0)
+    {
+        uart_set.log_file->write(ascii_buf.toUtf8());
+    }
+    else if(uart_set.log_mode == 1)
+    {
+        uart_set.log_file->write(hex_buf.toUtf8());
+    }
+    else if(uart_set.log_mode == 2)
+    {
+        uart_set.log_file->write("[ASCII]");
+        uart_set.log_file->write(ascii_buf.toUtf8());
+        uart_set.log_file->write("[HEX]");
+        uart_set.log_file->write(hex_buf.toUtf8());
+    }
+
 
 
     recv_frame.clear();
@@ -177,13 +306,28 @@ void serial_obj::recv_timeout()
     v.setValue(value_fix);
     emit statusbar_fix(v);
 
+    uart_set.recv_set.sn++;
     recv_frame_count++;
+
+
+}
+
+void serial_obj::recv_timeout()
+{
+    recv_timer->stop();
+    disp_info();
 }
 void serial_obj::recv(QByteArray arr)
 {
     recv_buf.append(arr);
     recv_frame.append(arr);
-    recv_timer->start(100);
+
+    if(uart_set.recv_set.is_swap){
+        recv_timer->start(uart_set.recv_set.swap_timeout);
+    }else{
+        disp_info();
+    }
+
 
 }
 void serial_obj::sendmessage(QString str)
@@ -213,6 +357,8 @@ void serial_obj::setting_charged(QVariant v)
         recv_browser_hex->hide();
     }
 
+    recv_browser->setFont(set.recv_set.font);
+    recv_browser_hex->setFont(set.recv_set.font);
     recv_browser->setTextColor(set.recv_set.color);
     recv_browser_hex->setTextColor(set.recv_set.color);
 }

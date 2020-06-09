@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLabel>
 #include "serial_obj.h"
+#include <QLCDNumber>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +39,8 @@ private slots:
 
 private:
     QLabel *statusbarRight;
+    QLCDNumber *statusbarCount;
+    QLCDNumber *statusbarFCount;
     void init_connect();
     Ui::MainWindow *ui;
 };

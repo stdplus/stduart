@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../work/stduart/stduart/serial_setting.h"
+#include "../../stduart/serial_setting.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_setting_t {
-    QByteArrayData data[20];
-    char stringdata0[336];
+    QByteArrayData data[34];
+    char stringdata0[732];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,7 +51,21 @@ QT_MOC_LITERAL(15, 219, 26), // "on_checkBox_2_stateChanged"
 QT_MOC_LITERAL(16, 246, 19), // "on_checkBox_clicked"
 QT_MOC_LITERAL(17, 266, 21), // "on_checkBox_2_clicked"
 QT_MOC_LITERAL(18, 288, 23), // "on_pushButton_5_clicked"
-QT_MOC_LITERAL(19, 312, 23) // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(19, 312, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(20, 336, 33), // "on_comboBox_3_currentIndexCha..."
+QT_MOC_LITERAL(21, 370, 33), // "on_comboBox_4_currentIndexCha..."
+QT_MOC_LITERAL(22, 404, 33), // "on_comboBox_5_currentIndexCha..."
+QT_MOC_LITERAL(23, 438, 33), // "on_comboBox_6_currentIndexCha..."
+QT_MOC_LITERAL(24, 472, 26), // "on_checkBox_3_stateChanged"
+QT_MOC_LITERAL(25, 499, 25), // "on_lineEdit_2_textChanged"
+QT_MOC_LITERAL(26, 525, 23), // "on_pushButton_6_clicked"
+QT_MOC_LITERAL(27, 549, 26), // "on_checkBox_5_stateChanged"
+QT_MOC_LITERAL(28, 576, 23), // "on_pushButton_7_clicked"
+QT_MOC_LITERAL(29, 600, 26), // "on_checkBox_4_stateChanged"
+QT_MOC_LITERAL(30, 627, 23), // "on_spinBox_valueChanged"
+QT_MOC_LITERAL(31, 651, 21), // "on_toolButton_clicked"
+QT_MOC_LITERAL(32, 673, 33), // "on_comboBox_8_currentIndexCha..."
+QT_MOC_LITERAL(33, 707, 24) // "on_pushButton_11_clicked"
 
     },
     "serial_setting\0show_message\0\0str\0"
@@ -63,7 +77,20 @@ QT_MOC_LITERAL(19, 312, 23) // "on_pushButton_2_clicked"
     "on_checkBox_stateChanged\0arg1\0"
     "on_checkBox_2_stateChanged\0"
     "on_checkBox_clicked\0on_checkBox_2_clicked\0"
-    "on_pushButton_5_clicked\0on_pushButton_2_clicked"
+    "on_pushButton_5_clicked\0on_pushButton_2_clicked\0"
+    "on_comboBox_3_currentIndexChanged\0"
+    "on_comboBox_4_currentIndexChanged\0"
+    "on_comboBox_5_currentIndexChanged\0"
+    "on_comboBox_6_currentIndexChanged\0"
+    "on_checkBox_3_stateChanged\0"
+    "on_lineEdit_2_textChanged\0"
+    "on_pushButton_6_clicked\0"
+    "on_checkBox_5_stateChanged\0"
+    "on_pushButton_7_clicked\0"
+    "on_checkBox_4_stateChanged\0"
+    "on_spinBox_valueChanged\0on_toolButton_clicked\0"
+    "on_comboBox_8_currentIndexChanged\0"
+    "on_pushButton_11_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +100,7 @@ static const uint qt_meta_data_serial_setting[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -81,22 +108,35 @@ static const uint qt_meta_data_serial_setting[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   84,    2, 0x06 /* Public */,
-       4,    1,   87,    2, 0x06 /* Public */,
-       6,    1,   90,    2, 0x06 /* Public */,
+       1,    1,  149,    2, 0x06 /* Public */,
+       4,    1,  152,    2, 0x06 /* Public */,
+       6,    1,  155,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   93,    2, 0x08 /* Private */,
-       9,    1,   94,    2, 0x08 /* Private */,
-      11,    1,   97,    2, 0x08 /* Private */,
-      12,    0,  100,    2, 0x08 /* Private */,
-      13,    1,  101,    2, 0x08 /* Private */,
-      15,    1,  104,    2, 0x08 /* Private */,
-      16,    0,  107,    2, 0x08 /* Private */,
-      17,    0,  108,    2, 0x08 /* Private */,
-      18,    0,  109,    2, 0x08 /* Private */,
-      19,    0,  110,    2, 0x08 /* Private */,
-       9,    1,  111,    2, 0x08 /* Private */,
+       8,    0,  158,    2, 0x08 /* Private */,
+       9,    1,  159,    2, 0x08 /* Private */,
+      11,    1,  162,    2, 0x08 /* Private */,
+      12,    0,  165,    2, 0x08 /* Private */,
+      13,    1,  166,    2, 0x08 /* Private */,
+      15,    1,  169,    2, 0x08 /* Private */,
+      16,    0,  172,    2, 0x08 /* Private */,
+      17,    0,  173,    2, 0x08 /* Private */,
+      18,    0,  174,    2, 0x08 /* Private */,
+      19,    0,  175,    2, 0x08 /* Private */,
+      20,    1,  176,    2, 0x08 /* Private */,
+      21,    1,  179,    2, 0x08 /* Private */,
+      22,    1,  182,    2, 0x08 /* Private */,
+      23,    1,  185,    2, 0x08 /* Private */,
+      24,    1,  188,    2, 0x08 /* Private */,
+      25,    1,  191,    2, 0x08 /* Private */,
+      26,    0,  194,    2, 0x08 /* Private */,
+      27,    1,  195,    2, 0x08 /* Private */,
+      28,    0,  198,    2, 0x08 /* Private */,
+      29,    1,  199,    2, 0x08 /* Private */,
+      30,    1,  202,    2, 0x08 /* Private */,
+      31,    0,  205,    2, 0x08 /* Private */,
+      32,    1,  206,    2, 0x08 /* Private */,
+      33,    0,  209,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -114,7 +154,20 @@ static const uint qt_meta_data_serial_setting[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -138,7 +191,20 @@ void serial_setting::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 10: _t->on_checkBox_2_clicked(); break;
         case 11: _t->on_pushButton_5_clicked(); break;
         case 12: _t->on_pushButton_2_clicked(); break;
-        case 13: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 13: _t->on_comboBox_3_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: _t->on_comboBox_4_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 15: _t->on_comboBox_5_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->on_comboBox_6_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: _t->on_checkBox_3_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: _t->on_lineEdit_2_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 19: _t->on_pushButton_6_clicked(); break;
+        case 20: _t->on_checkBox_5_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 21: _t->on_pushButton_7_clicked(); break;
+        case 22: _t->on_checkBox_4_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 23: _t->on_spinBox_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 24: _t->on_toolButton_clicked(); break;
+        case 25: _t->on_comboBox_8_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 26: _t->on_pushButton_11_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -196,13 +262,13 @@ int serial_setting::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 27;
     }
     return _id;
 }

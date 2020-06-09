@@ -19,16 +19,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    save2file.cpp \
     serial_obj.cpp \
     serial_setting.cpp
 
 HEADERS += \
     mainwindow.h \
+    save2file.h \
     serial_obj.h \
     serial_setting.h
 
 FORMS += \
     mainwindow.ui \
+    save2file.ui \
     serial_obj.ui \
     serial_setting.ui
 

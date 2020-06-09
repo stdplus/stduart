@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "serial_obj.h"
+#include <QDesktopWidget>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -8,7 +9,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    showMaximized();
+
+    QDesktopWidget* desktopWidget = QApplication::desktop();
+
+
+    resize(desktopWidget->width()/4*3, desktopWidget->height()/4*3);
+    move((desktopWidget->width()-this->width())/2, (desktopWidget->height()-this->height())/2);
+
+
     setCentralWidget(ui->mdiArea);
 
 
@@ -21,11 +29,20 @@ MainWindow::MainWindow(QWidget *parent)
     serial_objs->show();
 
     statusbarRight = new QLabel;
-    ui->statusbar->addPermanentWidget(statusbarRight);
+    statusbarCount = new QLCDNumber;
+    statusbarFCount = new QLCDNumber;
 
+    QLabel *label0 = new QLabel;
+    QLabel *label1 = new QLabel;
+
+    label0->setText("接收字节");
+    label1->setText("接收帧");
+    ui->statusbar->addPermanentWidget(label0);
+    ui->statusbar->addPermanentWidget(statusbarCount);
+    ui->statusbar->addPermanentWidget(label1);
+    ui->statusbar->addPermanentWidget(statusbarFCount);
 
     ui->statusbar->showMessage("创建MDI成功");
-
 
 
 
@@ -41,15 +58,9 @@ void MainWindow::statusbarRightShow(QVariant v)
 {
 
     struct statusbar_fix value_fix = v.value<struct statusbar_fix >();
-    statusbarRight->setText("接收字节:"+
-                            QString::number(value_fix.recv_buf_size,10)+
-                            "Bytes|"+
-                            "接收帧计数:"+
-                            QString::number(value_fix.recv_frames,10)+
-                            "帧"+
-                            "   "
-                            );
 
+    statusbarCount->display((int)value_fix.recv_buf_size);
+    statusbarFCount->display((int)value_fix.recv_frames);
 }
 
 MainWindow::~MainWindow()

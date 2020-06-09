@@ -5,15 +5,34 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QtDebug>
+#include <qserialport.h>
+#include "save2file.h"
+#include <QFile>
+#include <QDateTime>
+#include <QTableView>
+#include <QStandardItem>
 
 struct recv_setting{
     bool is_ascii;
     bool is_hex;
+    bool is_sn;
+    qint64 sn;
+    bool is_swap;
+    qint64 swap_timeout;
+
+    bool is_timestamp;
+    QString timestamp_format;
 
     QColor color;
+    QColor timestamp_color;
+    QFont font;
 };
+
 struct uart_setting{
     struct recv_setting recv_set;
+    QString log_dir;
+    QFile *log_file;
+    int log_mode;
 
 };
 
@@ -55,15 +74,48 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_comboBox_3_currentIndexChanged(int index);
+
+    void on_comboBox_4_currentIndexChanged(int index);
+
+    void on_comboBox_5_currentIndexChanged(int index);
+
+    void on_comboBox_6_currentIndexChanged(int index);
+
+    void on_checkBox_3_stateChanged(int arg1);
+
+    void on_lineEdit_2_textChanged(const QString &arg1);
+
+    void on_pushButton_6_clicked();
+
+    void on_checkBox_5_stateChanged(int arg1);
+
+    void on_pushButton_7_clicked();
+
+    void on_checkBox_4_stateChanged(int arg1);
+
+    void on_spinBox_valueChanged(int arg1);
+
+    void on_toolButton_clicked();
+
+
+    void on_comboBox_8_currentIndexChanged(int index);
+
+    void on_pushButton_11_clicked();
+
 private:
-    struct uart_setting uart_set;
+
     bool is_uart_open;
     QSerialPort *m_serial = nullptr;
     Ui::serial_setting *ui;
     QStringList uartinfo_list;
     QList<QSerialPortInfo> infos;
 
+    void enum_uart_infos(void);
     void readData();
+    void handleError(QSerialPort::SerialPortError error);
 };
 
 #endif // SERIAL_SETTING_H

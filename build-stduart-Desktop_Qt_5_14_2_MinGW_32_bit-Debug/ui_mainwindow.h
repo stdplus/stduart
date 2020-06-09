@@ -50,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1500, 1000);
+        MainWindow->resize(800, 600);
         actionabout = new QAction(MainWindow);
         actionabout->setObjectName(QString::fromUtf8("actionabout"));
         actionupdate = new QAction(MainWindow);
@@ -83,7 +83,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1500, 23));
+        menubar->setGeometry(QRect(0, 0, 800, 23));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menubar);
