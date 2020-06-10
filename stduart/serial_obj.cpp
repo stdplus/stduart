@@ -140,44 +140,30 @@ serial_obj::serial_obj(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::serial_obj)
 {
-
-
-
-
-
     ui->setupUi(this);
 
 
+    //左侧设置区域
+    serial_setting *setting = new serial_setting;
 
-    //新建主分割窗口
-
-    QSplitter *splitterMain = new QSplitter(Qt::Horizontal, this);
-    QTextBrowser *recv_browser2 = new QTextBrowser;
-
-    serial_setting *setting = new serial_setting(splitterMain);
-
-
-    QSplitter *splitterRight = new QSplitter(Qt::Vertical);   //右分割窗口，并以主分割窗口作为父窗口
-    splitterRight->setOpaqueResize(false);
-    splitterMain->insertWidget(1, splitterRight);
-
-    splitterMain->setStretchFactor(0, 1);
-    splitterMain->setStretchFactor(1, 6);
-
-    QSplitter *splitterAreaRecv = new QSplitter(Qt::Horizontal, splitterRight);
-
-
-
-    recv_browser = new QTextBrowser(splitterAreaRecv);
+    //右上ASCII区域
+    recv_browser = new QTextBrowser();
     recv_browser->setAlignment(Qt::AlignLeft);
+    connect(recv_browser, &QTextEdit::cursorPositionChanged, this, &serial_obj::on_recvbrowser_cursorPositionChanged);
 
-    recv_browser_hex = new QTextBrowser(splitterAreaRecv);
-    ascii_tab = new QTableView(splitterAreaRecv);
+    //右上HEX区域
+    recv_browser_hex = new QTextBrowser();
+    recv_browser_hex->hide();
 
+    //右上ASCII码表
+    ascii_tab = new QTableView();
     QStandardItemModel *model = new QStandardItemModel;   //创建一个标准的条目模型
     ascii_tab->setModel(model);   //将tableview设置成model这个标准条目模型的模板, model设置的内容都将显示在tableview上
-
-
+    model->setHorizontalHeaderItem(0, new QStandardItem("二进制") );
+    model->setHorizontalHeaderItem(1, new QStandardItem("十进制"));
+    model->setHorizontalHeaderItem(2, new QStandardItem("十六进制"));
+    model->setHorizontalHeaderItem(3, new QStandardItem("缩写/字符"));
+    model->setHorizontalHeaderItem(4, new QStandardItem("解释"));
     for(int i=0; i<128; i++)
     {
         for(int j=0; j<5; j++)
@@ -186,18 +172,14 @@ serial_obj::serial_obj(QWidget *parent) :
             model->setItem(i, j, item);
         }
     }
-
-
-    model->setHorizontalHeaderItem(0, new QStandardItem("二进制") );
-    model->setHorizontalHeaderItem(1, new QStandardItem("十进制"));
-    model->setHorizontalHeaderItem(2, new QStandardItem("十六进制"));
-    model->setHorizontalHeaderItem(3, new QStandardItem("缩写/字符"));
-    model->setHorizontalHeaderItem(4, new QStandardItem("解释"));
-
-
     ascii_tab->hide();
 
-    toolbar = new QToolBar(splitterRight);
+    //右上数值转换器
+    tools_cal = new class tools_cal();
+   // tools_cal->hide();
+
+    //右下菜单区域
+    toolbar = new QToolBar();
     actionRecvClear = new QAction;
     actionRecvClear->setText("清空显示");
     actionRecvClear->setIcon(QIcon("res/clear.jpg"));
@@ -251,22 +233,47 @@ serial_obj::serial_obj(QWidget *parent) :
     connect(actionZoomin, &QAction::triggered, this, &serial_obj::on_action_zoomin);
     connect(actionZoomout, &QAction::triggered, this, &serial_obj::on_action_zoomout);
 
-    QTextEdit *textBottom = new QTextEdit(QObject::tr("底部部件"),splitterRight);
+    //右下发送按钮
+    push_transmit = new QPushButton();
+    push_transmit->setText("发送");
+
+    //右下发送区域
+    QTextEdit *textBottom = new QTextEdit(QObject::tr("底部部件"));
     textBottom->setAlignment(Qt::AlignCenter);
 
 
+    //添加水平分割器 垂直分割器
+    QSplitter *splitterMain = new QSplitter(Qt::Horizontal, this);
+    QSplitter *splitterV = new QSplitter(Qt::Vertical);
+    QSplitter *splitterH = new QSplitter(Qt::Horizontal);
 
-
-
-
-    splitterRight->setStretchFactor(0,6);
-    splitterRight->setStretchFactor(1,1);
-
-    splitterMain->setWindowTitle(QObject::tr("分割窗口"));
+    //主分割器添加
+    //左设置窗口
+    //垂直分割器
     splitterMain->showMaximized();
 
 
+    splitterMain->addWidget(setting);
+    splitterMain->addWidget(splitterV);
 
+
+    splitterMain->setStretchFactor(0, 1);
+    splitterMain->setStretchFactor(1, 1);
+
+
+    splitterV->addWidget(recv_browser);
+    splitterV->addWidget(textBottom);
+
+
+    splitterV->setStretchFactor(0,1);
+    splitterV->setStretchFactor(1,1);
+
+
+
+
+
+
+    splitterMain->setWindowTitle(QObject::tr("分割窗口"));
 
 
     QGridLayout* layout = new QGridLayout();
@@ -281,7 +288,7 @@ serial_obj::serial_obj(QWidget *parent) :
     recv_timer = new QTimer(this);
     connect(recv_timer, SIGNAL(timeout()), this, SLOT(recv_timeout()));
 
-    connect(recv_browser, &QTextEdit::cursorPositionChanged, this, &serial_obj::on_recvbrowser_cursorPositionChanged);
+
     recv_frame_count = 0;
     is_recv_pulse = false;
 
@@ -289,8 +296,6 @@ serial_obj::serial_obj(QWidget *parent) :
     uart_set.recv_set.color = QColor(0,85,255);
     uart_set.recv_set.timestamp_color = QColor(113,113,113);
 
-    recv_browser->show();
-    recv_browser_hex->hide();
 }
 
 //接收区控件鼠标移动
@@ -520,6 +525,12 @@ void serial_obj::setting_charged(QVariant v)
     }else{
         ascii_tab->hide();
     }
+    if(set.tools_set.is_cal){
+        tools_cal->show();
+    }else{
+        tools_cal->hide();
+    }
+
 
     recv_browser->setFont(set.recv_set.font);
     recv_browser_hex->setFont(set.recv_set.font);

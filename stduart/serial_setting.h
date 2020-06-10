@@ -30,6 +30,7 @@ struct recv_setting{
 
 struct tools_setting{
     bool is_asciitab;
+    bool is_cal;
 };
 
 struct uart_setting{
@@ -114,10 +115,13 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_10_clicked();
+
 private:
 
     bool is_uart_open;
     bool is_open_ascii;
+    bool is_open_cal;
     QSerialPort *m_serial = nullptr;
     Ui::serial_setting *ui;
     QStringList uartinfo_list;

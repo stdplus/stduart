@@ -10,6 +10,8 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QDateTime>
+#include "tools_cal.h"
+#include <QPushButton>
 
 struct statusbar_fix{
   qint64 recv_buf_size;
@@ -71,6 +73,8 @@ private:
     QTextBrowser *recv_browser;
     QTextBrowser *recv_browser_hex;
     QTableView *ascii_tab;
+    tools_cal *tools_cal;
+    QPushButton *push_transmit;
 
     QTimer *recv_timer;
     QByteArray recv_frame;

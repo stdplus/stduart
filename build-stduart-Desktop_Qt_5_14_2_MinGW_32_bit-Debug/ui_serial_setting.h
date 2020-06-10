@@ -96,7 +96,7 @@ public:
         if (serial_setting->objectName().isEmpty())
             serial_setting->setObjectName(QString::fromUtf8("serial_setting"));
         serial_setting->resize(705, 666);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(serial_setting->sizePolicy().hasHeightForWidth());
@@ -170,11 +170,8 @@ public:
 
         textBrowser = new QTextBrowser(page);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(textBrowser->sizePolicy().hasHeightForWidth());
-        textBrowser->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(textBrowser->sizePolicy().hasHeightForWidth());
+        textBrowser->setSizePolicy(sizePolicy);
         textBrowser->setMaximumSize(QSize(16777215, 81));
 
         gridLayout->addWidget(textBrowser, 2, 0, 1, 2);
@@ -393,7 +390,7 @@ public:
 
         retranslateUi(serial_setting);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(serial_setting);
@@ -433,7 +430,7 @@ public:
         toolBox->setItemText(toolBox->indexOf(page_2), QCoreApplication::translate("serial_setting", "\345\217\221\351\200\201\345\214\272", nullptr));
         pushButton_8->setText(QCoreApplication::translate("serial_setting", "\346\211\223\345\274\200ASCII\347\240\201\350\241\250", nullptr));
         pushButton_9->setText(QCoreApplication::translate("serial_setting", "\346\240\241\351\252\214\347\240\201\350\256\241\347\256\227", nullptr));
-        pushButton_10->setText(QCoreApplication::translate("serial_setting", "PushButton", nullptr));
+        pushButton_10->setText(QCoreApplication::translate("serial_setting", "\346\211\223\345\274\200\346\225\260\345\200\274\346\215\242\347\256\227", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_5), QCoreApplication::translate("serial_setting", "\345\267\245\345\205\267\347\256\261", nullptr));
     } // retranslateUi
 

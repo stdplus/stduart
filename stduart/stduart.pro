@@ -21,19 +21,22 @@ SOURCES += \
     mainwindow.cpp \
     save2file.cpp \
     serial_obj.cpp \
-    serial_setting.cpp
+    serial_setting.cpp \
+    tools_cal.cpp
 
 HEADERS += \
     mainwindow.h \
     save2file.h \
     serial_obj.h \
-    serial_setting.h
+    serial_setting.h \
+    tools_cal.h
 
 FORMS += \
     mainwindow.ui \
     save2file.ui \
     serial_obj.ui \
-    serial_setting.ui
+    serial_setting.ui \
+    tools_cal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

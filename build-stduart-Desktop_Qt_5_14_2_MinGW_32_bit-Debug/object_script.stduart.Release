@@ -3,8 +3,10 @@ release/mainwindow.o
 release/save2file.o
 release/serial_obj.o
 release/serial_setting.o
+release/tools_cal.o
 release/qrc_res.o
 release/moc_mainwindow.o
 release/moc_save2file.o
 release/moc_serial_obj.o
 release/moc_serial_setting.o
+release/moc_tools_cal.o

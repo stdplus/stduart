@@ -18,6 +18,7 @@ serial_setting::serial_setting(QWidget *parent) :
 
 
     is_uart_open = false;
+    is_open_cal = false;
     is_open_ascii = false;
 
     QGridLayout *layout =  new QGridLayout;
@@ -537,4 +538,21 @@ void serial_setting::on_pushButton_8_clicked()
 
     is_open_ascii = !is_open_ascii;
 
+}
+
+void serial_setting::on_pushButton_10_clicked()
+{
+    if(!is_open_cal){
+        ui->pushButton_10->setText("关闭数值换算");
+        uart_set.tools_set.is_cal = true;
+    }else{
+        ui->pushButton_10->setText("打开数值换算");
+        uart_set.tools_set.is_cal = false;
+    }
+
+    QVariant v;
+    v.setValue(uart_set);
+    emit setting_charge_notif(v);
+
+    is_open_cal = !is_open_cal;
 }
