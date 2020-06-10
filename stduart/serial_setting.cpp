@@ -18,6 +18,7 @@ serial_setting::serial_setting(QWidget *parent) :
 
 
     is_uart_open = false;
+    is_open_ascii = false;
 
     QGridLayout *layout =  new QGridLayout;
     layout->addWidget(ui->toolBox);
@@ -517,5 +518,23 @@ void serial_setting::on_pushButton_11_clicked()
 
 void serial_setting::on_tableView_doubleClicked(const QModelIndex &index)
 {
+
+}
+
+void serial_setting::on_pushButton_8_clicked()
+{
+    if(!is_open_ascii){
+        ui->pushButton_8->setText("关闭ASCII码表");
+        uart_set.tools_set.is_asciitab = true;
+    }else{
+        ui->pushButton_8->setText("打开ASCII码表");
+        uart_set.tools_set.is_asciitab = false;
+    }
+
+    QVariant v;
+    v.setValue(uart_set);
+    emit setting_charge_notif(v);
+
+    is_open_ascii = !is_open_ascii;
 
 }

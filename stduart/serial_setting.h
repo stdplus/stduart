@@ -28,8 +28,13 @@ struct recv_setting{
     QFont font;
 };
 
+struct tools_setting{
+    bool is_asciitab;
+};
+
 struct uart_setting{
     struct recv_setting recv_set;
+    struct tools_setting tools_set;
     QString log_dir;
     QFile *log_file;
     int log_mode;
@@ -107,9 +112,12 @@ private slots:
 
     void on_tableView_doubleClicked(const QModelIndex &index);
 
+    void on_pushButton_8_clicked();
+
 private:
 
     bool is_uart_open;
+    bool is_open_ascii;
     QSerialPort *m_serial = nullptr;
     Ui::serial_setting *ui;
     QStringList uartinfo_list;

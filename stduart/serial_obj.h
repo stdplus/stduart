@@ -70,6 +70,7 @@ private:
     Ui::serial_obj *ui;
     QTextBrowser *recv_browser;
     QTextBrowser *recv_browser_hex;
+    QTableView *ascii_tab;
 
     QTimer *recv_timer;
     QByteArray recv_frame;

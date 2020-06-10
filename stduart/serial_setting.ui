@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page">
     <property name="geometry">
@@ -371,6 +371,14 @@
     </attribute>
    </widget>
    <widget class="QWidget" name="page_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>301</width>
+      <height>331</height>
+     </rect>
+    </property>
     <attribute name="label">
      <string>工具箱</string>
     </attribute>
@@ -379,12 +387,12 @@
       <rect>
        <x>90</x>
        <y>40</y>
-       <width>75</width>
+       <width>91</width>
        <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>ASCII码表</string>
+      <string>打开ASCII码表</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_9">
@@ -392,7 +400,7 @@
       <rect>
        <x>90</x>
        <y>100</y>
-       <width>75</width>
+       <width>91</width>
        <height>23</height>
       </rect>
      </property>
@@ -405,7 +413,7 @@
       <rect>
        <x>90</x>
        <y>150</y>
-       <width>75</width>
+       <width>91</width>
        <height>23</height>
       </rect>
      </property>

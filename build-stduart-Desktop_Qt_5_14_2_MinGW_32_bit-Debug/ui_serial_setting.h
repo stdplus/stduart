@@ -379,20 +379,21 @@ public:
         toolBox->addItem(page_2, QString::fromUtf8("\345\217\221\351\200\201\345\214\272"));
         page_5 = new QWidget();
         page_5->setObjectName(QString::fromUtf8("page_5"));
+        page_5->setGeometry(QRect(0, 0, 301, 331));
         pushButton_8 = new QPushButton(page_5);
         pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
-        pushButton_8->setGeometry(QRect(90, 40, 75, 23));
+        pushButton_8->setGeometry(QRect(90, 40, 91, 23));
         pushButton_9 = new QPushButton(page_5);
         pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
-        pushButton_9->setGeometry(QRect(90, 100, 75, 23));
+        pushButton_9->setGeometry(QRect(90, 100, 91, 23));
         pushButton_10 = new QPushButton(page_5);
         pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
-        pushButton_10->setGeometry(QRect(90, 150, 75, 23));
+        pushButton_10->setGeometry(QRect(90, 150, 91, 23));
         toolBox->addItem(page_5, QString::fromUtf8("\345\267\245\345\205\267\347\256\261"));
 
         retranslateUi(serial_setting);
 
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(serial_setting);
@@ -430,7 +431,7 @@ public:
         checkBox_4->setText(QCoreApplication::translate("serial_setting", "\350\207\252\345\212\250\346\215\242\350\241\214", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_4), QCoreApplication::translate("serial_setting", "\346\216\245\346\224\266\345\214\272", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_2), QCoreApplication::translate("serial_setting", "\345\217\221\351\200\201\345\214\272", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("serial_setting", "ASCII\347\240\201\350\241\250", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("serial_setting", "\346\211\223\345\274\200ASCII\347\240\201\350\241\250", nullptr));
         pushButton_9->setText(QCoreApplication::translate("serial_setting", "\346\240\241\351\252\214\347\240\201\350\256\241\347\256\227", nullptr));
         pushButton_10->setText(QCoreApplication::translate("serial_setting", "PushButton", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_5), QCoreApplication::translate("serial_setting", "\345\267\245\345\205\267\347\256\261", nullptr));
