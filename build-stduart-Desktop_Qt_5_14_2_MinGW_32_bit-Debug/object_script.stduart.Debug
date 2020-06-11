@@ -1,12 +1,16 @@
 debug/main.o
 debug/mainwindow.o
+debug/recv_area.o
 debug/save2file.o
 debug/serial_obj.o
 debug/serial_setting.o
 debug/tools_cal.o
+debug/transmit_area.o
 debug/qrc_res.o
 debug/moc_mainwindow.o
+debug/moc_recv_area.o
 debug/moc_save2file.o
 debug/moc_serial_obj.o
 debug/moc_serial_setting.o
 debug/moc_tools_cal.o
+debug/moc_transmit_area.o

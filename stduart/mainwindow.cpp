@@ -26,10 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
     serial_obj *serial_objs = new serial_obj;
     ui->mdiArea->addSubWindow(serial_objs);
     serial_objs->setWindowFlag(Qt::WindowTitleHint);
-
-
     serial_objs->showMaximized();
-    serial_objs->show();
+
+
+
 
     statusbarRight = new QLabel;
     statusbarCount = new QLCDNumber;

@@ -34,7 +34,12 @@ public:
     {
         if (tools_cal->objectName().isEmpty())
             tools_cal->setObjectName(QString::fromUtf8("tools_cal"));
-        tools_cal->resize(231, 458);
+        tools_cal->resize(780, 135);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tools_cal->sizePolicy().hasHeightForWidth());
+        tools_cal->setSizePolicy(sizePolicy);
         gridLayoutWidget = new QWidget(tools_cal);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(20, 10, 181, 91));

@@ -2,5 +2,14 @@
     <qresource prefix="/">
         <file>clear.jpg</file>
         <file>../qss/main.qss</file>
+        <file>ascii.jpg</file>
+        <file>bottom.jpg</file>
+        <file>h.jpg</file>
+        <file>pulse.jpg</file>
+        <file>run.jpg</file>
+        <file>top.jpg</file>
+        <file>update.jpg</file>
+        <file>zoomin.jpg</file>
+        <file>zoomout.jpg</file>
     </qresource>
 </RCC>

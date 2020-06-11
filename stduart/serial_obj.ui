@@ -6,14 +6,91 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>486</height>
+    <width>859</width>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>180</y>
+     <width>581</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QSplitter" name="splitter_main">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="serial_setting" name="widget_setting" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>235</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QSplitter" name="splitter_right">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="recv_area" name="widget_recv" native="true"/>
+       <widget class="transmit_area" name="widget_transmit" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>570</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>serial_setting</class>
+   <extends>QWidget</extends>
+   <header>serial_setting.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>transmit_area</class>
+   <extends>QWidget</extends>
+   <header>transmit_area.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>recv_area</class>
+   <extends>QWidget</extends>
+   <header>recv_area.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -19,24 +19,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    recv_area.cpp \
     save2file.cpp \
     serial_obj.cpp \
     serial_setting.cpp \
-    tools_cal.cpp
+    tools_cal.cpp \
+    transmit_area.cpp
 
 HEADERS += \
     mainwindow.h \
+    recv_area.h \
     save2file.h \
     serial_obj.h \
     serial_setting.h \
-    tools_cal.h
+    tools_cal.h \
+    transmit_area.h
 
 FORMS += \
     mainwindow.ui \
+    recv_area.ui \
     save2file.ui \
     serial_obj.ui \
     serial_setting.ui \
-    tools_cal.ui
+    tools_cal.ui \
+    transmit_area.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -12,6 +12,8 @@
 #include <QDateTime>
 #include "tools_cal.h"
 #include <QPushButton>
+#include <QDesktopWidget>
+
 
 struct statusbar_fix{
   qint64 recv_buf_size;
@@ -35,12 +37,10 @@ signals:
 
 public slots:
     void sendmessage(QString str);
-    void recv(QByteArray arr);
     void setting_charged(QVariant );
 
 
 private slots:
-    void recv_timeout();
     void on_action_pulse();
     void on_action_clear();
     void on_action_top();
@@ -70,18 +70,16 @@ private:
     bool is_recv_pulse;
     QByteArray recv_buf;
     Ui::serial_obj *ui;
-    QTextBrowser *recv_browser;
+
     QTextBrowser *recv_browser_hex;
     QTableView *ascii_tab;
     tools_cal *tools_cal;
     QPushButton *push_transmit;
 
-    QTimer *recv_timer;
     QByteArray recv_frame;
     qint64 recv_frame_count;
 
-
-    void disp_info(void);
+    void set_page_layout();
 };
 
 #endif // SERIAL_OBJ_H
