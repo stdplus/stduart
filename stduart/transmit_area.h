@@ -10,6 +10,8 @@ class transmit_area;
 class transmit_area : public QWidget
 {
     Q_OBJECT
+signals:
+    void send_button_cmd(qint16 cmd);
 
 public:
     explicit transmit_area(QWidget *parent = nullptr);

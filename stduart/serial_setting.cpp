@@ -246,6 +246,8 @@ void serial_setting::on_pushButton_clicked()
         }
 
     }
+
+
     m_serial->setPortName(infos.at(index).portName());
     int openmode = ui->comboBox_7->currentIndex();
     openmode += 1;

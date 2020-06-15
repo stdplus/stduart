@@ -20,6 +20,7 @@ public:
 
 public slots:
     void recv(QByteArray arr);
+    void recv_buttom_cmd(qint16 cmd);
 
 private slots:
     void recv_timeout();

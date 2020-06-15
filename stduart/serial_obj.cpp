@@ -194,10 +194,9 @@ serial_obj::serial_obj(QWidget *parent) :
     connect(ui->widget_setting,SIGNAL(show_message(QString )),this ,SLOT(sendmessage(QString)));
     connect(ui->widget_setting,SIGNAL(setting_charge_notif(QVariant )),this ,SLOT(setting_charged(QVariant )));
 
-
     connect(ui->widget_setting,SIGNAL(recv_ready(QByteArray )),ui->widget_recv ,SLOT(recv(QByteArray)));
 
-
+    connect(ui->widget_transmit,SIGNAL(send_button_cmd(qint16)),ui->widget_recv ,SLOT(recv_buttom_cmd(qint16)));
 #if 0
 
     //左侧设置区域
@@ -349,20 +348,20 @@ void serial_obj::on_recvbrowser_cursorPositionChanged()
 
 void serial_obj::on_action_zoomin()
 {
-    ui->textBrowser->zoomIn(1);
+    //ui->textBrowser->zoomIn(1);
 }
 void serial_obj::on_action_zoomout()
 {
-    ui->textBrowser->zoomOut(1);
+   // ui->textBrowser->zoomOut(1);
 }
 
 void serial_obj::on_action_top()
 {
-    ui->textBrowser->moveCursor(QTextCursor::Start);
+   // ui->textBrowser->moveCursor(QTextCursor::Start);
 }
 void serial_obj::on_action_bottom()
 {
-    ui->textBrowser->moveCursor(QTextCursor::End);
+    //ui->textBrowser->moveCursor(QTextCursor::End);
 
 }
 
@@ -391,7 +390,7 @@ void serial_obj::on_action_clear()
     recv_frame.clear();
   //  recv_timer->stop();
 
-    ui->textBrowser->clear();
+ //   ui->textBrowser->clear();
     recv_browser_hex->clear();
 
     recv_frame_count = 0;
@@ -430,14 +429,16 @@ serial_obj::~serial_obj()
 
 void serial_obj::setting_charged(QVariant v)
 {
+
+    /*
     struct uart_setting set;
 
     set = v.value<struct uart_setting >();
 
     if(set.recv_set.is_ascii){
-        ui->textBrowser->show();
+  //      ui->textBrowser->show();
     }else{
-        ui->textBrowser->hide();
+    //    ui->textBrowser->hide();
     }
 
     if(set.recv_set.is_hex){
@@ -458,8 +459,10 @@ void serial_obj::setting_charged(QVariant v)
     }
 
 
-    ui->textBrowser->setFont(set.recv_set.font);
+  //  ui->textBrowser->setFont(set.recv_set.font);
     recv_browser_hex->setFont(set.recv_set.font);
-    ui->textBrowser->setTextColor(set.recv_set.color);
+   // ui->textBrowser->setTextColor(set.recv_set.color);
     recv_browser_hex->setTextColor(set.recv_set.color);
+
+    */
 }

@@ -12,6 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QSplitter>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
@@ -22,29 +25,40 @@ class Ui_recv_area
 public:
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
+    QSplitter *splitter;
     QTextBrowser *textBrowser;
     QTextBrowser *textBrowser_2;
+    QTableView *tableView;
+    QWidget *widget;
 
     void setupUi(QWidget *recv_area)
     {
         if (recv_area->objectName().isEmpty())
             recv_area->setObjectName(QString::fromUtf8("recv_area"));
-        recv_area->resize(826, 554);
+        recv_area->resize(879, 582);
         gridLayoutWidget = new QWidget(recv_area);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(80, 30, 541, 451));
+        gridLayoutWidget->setGeometry(QRect(60, 70, 391, 161));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        textBrowser = new QTextBrowser(gridLayoutWidget);
+        splitter = new QSplitter(gridLayoutWidget);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        textBrowser = new QTextBrowser(splitter);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-
-        gridLayout->addWidget(textBrowser, 0, 0, 1, 1);
-
-        textBrowser_2 = new QTextBrowser(gridLayoutWidget);
+        splitter->addWidget(textBrowser);
+        textBrowser_2 = new QTextBrowser(splitter);
         textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
+        splitter->addWidget(textBrowser_2);
+        tableView = new QTableView(splitter);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        splitter->addWidget(tableView);
+        widget = new QWidget(splitter);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        splitter->addWidget(widget);
 
-        gridLayout->addWidget(textBrowser_2, 0, 1, 1, 1);
+        gridLayout->addWidget(splitter, 0, 0, 1, 1);
 
 
         retranslateUi(recv_area);

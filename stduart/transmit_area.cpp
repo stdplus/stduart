@@ -18,4 +18,5 @@ transmit_area::~transmit_area()
 void transmit_area::on_pushButton_clicked()
 {
 
+    emit send_button_cmd(1);
 }

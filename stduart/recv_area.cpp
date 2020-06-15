@@ -139,3 +139,13 @@ void recv_area::disp_info()
     */
 
 }
+
+void recv_area::recv_buttom_cmd(qint16 cmd)
+{
+    recv_buf.clear();
+    recv_frame.clear();
+    recv_timer->stop();
+
+    ui->textBrowser->clear();
+    ui->textBrowser_2->clear();
+}

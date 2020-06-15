@@ -54,7 +54,7 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         pushButton_6 = new QPushButton(gridLayoutWidget);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
@@ -74,11 +74,8 @@ public:
 
         pushButton_3 = new QPushButton(gridLayoutWidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy1);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/ascii.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_3->setIcon(icon1);
@@ -87,6 +84,8 @@ public:
 
         pushButton_7 = new QPushButton(gridLayoutWidget);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        sizePolicy1.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
+        pushButton_7->setSizePolicy(sizePolicy1);
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/bottom.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_7->setIcon(icon2);
@@ -95,6 +94,8 @@ public:
 
         pushButton_8 = new QPushButton(gridLayoutWidget);
         pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        sizePolicy1.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
+        pushButton_8->setSizePolicy(sizePolicy1);
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/zoomin.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_8->setIcon(icon3);
@@ -108,8 +109,8 @@ public:
 
         pushButton = new QPushButton(gridLayoutWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/clear.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton->setIcon(icon4);
@@ -123,8 +124,8 @@ public:
 
         pushButton_2 = new QPushButton(gridLayoutWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy1);
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/pulse.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_2->setIcon(icon5);
@@ -133,8 +134,8 @@ public:
 
         pushButton_4 = new QPushButton(gridLayoutWidget);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        sizePolicy2.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy1);
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/h.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_4->setIcon(icon6);
@@ -143,6 +144,8 @@ public:
 
         pushButton_9 = new QPushButton(gridLayoutWidget);
         pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+        sizePolicy1.setHeightForWidth(pushButton_9->sizePolicy().hasHeightForWidth());
+        pushButton_9->setSizePolicy(sizePolicy1);
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/zoomout.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_9->setIcon(icon7);

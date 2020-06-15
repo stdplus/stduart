@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QSplitter>
-#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 #include "recv_area.h"
 #include "serial_setting.h"
@@ -31,7 +30,6 @@ public:
     QSplitter *splitter_right;
     recv_area *widget_recv;
     transmit_area *widget_transmit;
-    QTextBrowser *textBrowser;
 
     void setupUi(QWidget *serial_obj)
     {
@@ -74,9 +72,6 @@ public:
 
         gridLayout->addWidget(splitter_main, 1, 0, 1, 1);
 
-        textBrowser = new QTextBrowser(serial_obj);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(350, 570, 256, 192));
 
         retranslateUi(serial_obj);
 
