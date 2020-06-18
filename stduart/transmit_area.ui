@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>896</width>
-    <height>539</height>
+    <height>724</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,28 +22,15 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>60</y>
+     <x>40</x>
+     <y>30</y>
      <width>553</width>
      <height>281</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="9">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>发送</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QPushButton" name="pushButton_5">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -55,7 +42,7 @@
       </property>
       <property name="icon">
        <iconset resource="res/res.qrc">
-        <normaloff>:/top.jpg</normaloff>:/top.jpg</iconset>
+        <normaloff>:/pulse.jpg</normaloff>:/pulse.jpg</iconset>
       </property>
      </widget>
     </item>
@@ -76,24 +63,10 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="5">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="res/res.qrc">
-        <normaloff>:/bottom.jpg</normaloff>:/bottom.jpg</iconset>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="6">
+     <widget class="QWidget" name="widget" native="true"/>
+    </item>
+    <item row="0" column="4">
      <widget class="QPushButton" name="pushButton_8">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -110,11 +83,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="10">
-     <widget class="QTextEdit" name="textEdit"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton">
+    <item row="0" column="7">
+     <widget class="QPushButton" name="pushButton_6">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -122,19 +92,12 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="res/res.qrc">
-        <normaloff>:/clear.jpg</normaloff>:/clear.jpg</iconset>
+       <string>发送</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="8">
-     <widget class="QWidget" name="widget" native="true"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_2">
+    <item row="0" column="5">
+     <widget class="QPushButton" name="pushButton_9">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -146,7 +109,7 @@
       </property>
       <property name="icon">
        <iconset resource="res/res.qrc">
-        <normaloff>:/pulse.jpg</normaloff>:/pulse.jpg</iconset>
+        <normaloff>:/zoomout.jpg</normaloff>:/zoomout.jpg</iconset>
       </property>
      </widget>
     </item>
@@ -167,8 +130,8 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="7">
-     <widget class="QPushButton" name="pushButton_9">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pushButton">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -180,8 +143,58 @@
       </property>
       <property name="icon">
        <iconset resource="res/res.qrc">
-        <normaloff>:/zoomout.jpg</normaloff>:/zoomout.jpg</iconset>
+        <normaloff>:/clear.jpg</normaloff>:/clear.jpg</iconset>
       </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="8">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideMiddle</enum>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>当前</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTextEdit" name="textEdit">
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>

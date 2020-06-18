@@ -36,10 +36,16 @@ public:
         if (recv_area->objectName().isEmpty())
             recv_area->setObjectName(QString::fromUtf8("recv_area"));
         recv_area->resize(879, 582);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(recv_area->sizePolicy().hasHeightForWidth());
+        recv_area->setSizePolicy(sizePolicy);
         gridLayoutWidget = new QWidget(recv_area);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(60, 70, 391, 161));
+        gridLayoutWidget->setGeometry(QRect(270, 100, 361, 214));
         gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(0);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
         splitter = new QSplitter(gridLayoutWidget);
@@ -47,6 +53,13 @@ public:
         splitter->setOrientation(Qt::Horizontal);
         textBrowser = new QTextBrowser(splitter);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(textBrowser->sizePolicy().hasHeightForWidth());
+        textBrowser->setSizePolicy(sizePolicy1);
+        textBrowser->setMouseTracking(true);
+        textBrowser->setAcceptRichText(false);
         splitter->addWidget(textBrowser);
         textBrowser_2 = new QTextBrowser(splitter);
         textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));

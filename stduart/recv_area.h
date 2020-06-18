@@ -21,9 +21,15 @@ public:
 public slots:
     void recv(QByteArray arr);
     void recv_buttom_cmd(qint16 cmd);
+    void setting_charged(QVariant v);
+    void aaa(int v);
 
 private slots:
     void recv_timeout();
+
+    void on_textBrowser_textChanged();
+
+    void on_verticalScrollBar_valueChanged(int value);
 
 private:
     Ui::recv_area *ui;
@@ -34,6 +40,9 @@ private:
     QTimer *recv_timer;
 
     void disp_info(void);
+    void recvarea_append_str(QColor color,QString str);
+    void recvarea_hex_append_str(QColor color,QString str);
+
 };
 
 #endif // RECV_AREA_H

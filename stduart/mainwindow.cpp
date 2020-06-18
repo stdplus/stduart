@@ -10,9 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
-
-
     QDesktopWidget* desktopWidget = QApplication::desktop();
 
 
@@ -86,9 +83,9 @@ void MainWindow::on_actionnew_triggered()
     serial_obj *serial_objs = new serial_obj;
     ui->mdiArea->addSubWindow(serial_objs);
     ui->mdiArea->setViewMode(QMdiArea::SubWindowView);
-    ui->mdiArea->tileSubWindows();
-    serial_objs->show();
 
+    serial_objs->show();
+    ui->mdiArea->tileSubWindows();
 }
 
 void MainWindow::on_actionview_tab_triggered()

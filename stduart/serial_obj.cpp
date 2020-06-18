@@ -192,11 +192,14 @@ serial_obj::serial_obj(QWidget *parent) :
 
     //全局信号连接
     connect(ui->widget_setting,SIGNAL(show_message(QString )),this ,SLOT(sendmessage(QString)));
-    connect(ui->widget_setting,SIGNAL(setting_charge_notif(QVariant )),this ,SLOT(setting_charged(QVariant )));
+    connect(ui->widget_setting,SIGNAL(setting_charge_notif(QVariant )),ui->widget_recv ,SLOT(setting_charged(QVariant )));
+    connect(ui->widget_transmit,SIGNAL(setting_charge_notif(QVariant )),ui->widget_recv ,SLOT(setting_charged(QVariant )));
 
     connect(ui->widget_setting,SIGNAL(recv_ready(QByteArray )),ui->widget_recv ,SLOT(recv(QByteArray)));
 
     connect(ui->widget_transmit,SIGNAL(send_button_cmd(qint16)),ui->widget_recv ,SLOT(recv_buttom_cmd(qint16)));
+    connect(ui->widget_transmit,SIGNAL(serial_transmit(QByteArray)), ui->widget_setting ,SLOT(serial_transmit(QByteArray)));
+
 #if 0
 
     //左侧设置区域
@@ -371,7 +374,7 @@ void serial_obj::on_action_ascii()
 
     QVariant v;
     v.setValue(uart_set);
-    setting_charged(v);
+   // setting_charged(v);
 
 }
 void serial_obj::on_action_hex()
@@ -380,7 +383,7 @@ void serial_obj::on_action_hex()
 
     QVariant v;
     v.setValue(uart_set);
-    setting_charged(v);
+   // setting_charged(v);
 
 }
 
@@ -427,42 +430,3 @@ serial_obj::~serial_obj()
     delete ui;
 }
 
-void serial_obj::setting_charged(QVariant v)
-{
-
-    /*
-    struct uart_setting set;
-
-    set = v.value<struct uart_setting >();
-
-    if(set.recv_set.is_ascii){
-  //      ui->textBrowser->show();
-    }else{
-    //    ui->textBrowser->hide();
-    }
-
-    if(set.recv_set.is_hex){
-        recv_browser_hex->show();
-    }else{
-        recv_browser_hex->hide();
-    }
-
-    if(set.tools_set.is_asciitab){
-        ascii_tab->show();
-    }else{
-        ascii_tab->hide();
-    }
-    if(set.tools_set.is_cal){
-        tools_cal->show();
-    }else{
-        tools_cal->hide();
-    }
-
-
-  //  ui->textBrowser->setFont(set.recv_set.font);
-    recv_browser_hex->setFont(set.recv_set.font);
-   // ui->textBrowser->setTextColor(set.recv_set.color);
-    recv_browser_hex->setTextColor(set.recv_set.color);
-
-    */
-}

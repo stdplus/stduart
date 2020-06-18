@@ -16,7 +16,9 @@ int main(int argc, char *argv[])
     uart_set.log_mode = 0;
 
     QApplication a(argc, argv);
+
     MainWindow w;
+
     w.show();
     return a.exec();
 }

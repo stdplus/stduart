@@ -16,6 +16,8 @@ serial_setting::serial_setting(QWidget *parent) :
 
     ui->setupUi(this);
 
+    uart_set.is_log = false;
+    ui->checkBox_7->setChecked(uart_set.is_log);
 
     is_uart_open = false;
     is_open_cal = false;
@@ -84,9 +86,10 @@ serial_setting::serial_setting(QWidget *parent) :
     ui->comboBox_8->setCurrentIndex(0);
     connect(m_serial, &QSerialPort::readyRead, this, &serial_setting::readData);
 
+
     ui->pushButton_2->setIcon(QIcon("res/update.jpg"));
 
-    uart_set.recv_set.is_hex = true;
+    uart_set.recv_set.is_hex = false;
     uart_set.recv_set.is_ascii=true;
 
     ui->checkBox->setChecked(uart_set.recv_set.is_ascii);
@@ -143,7 +146,7 @@ serial_setting::serial_setting(QWidget *parent) :
    ui->horizontalSlider->setSingleStep(nSingleStep);  // 步长
 
 
-    uart_set.recv_set.swap_timeout = 100;
+    uart_set.recv_set.swap_timeout = 50;
    ui->horizontalSlider->setValue(uart_set.recv_set.swap_timeout);
    ui->spinBox->setValue(uart_set.recv_set.swap_timeout);
    ui->checkBox_4->setChecked(uart_set.recv_set.is_swap);
@@ -155,7 +158,10 @@ serial_setting::serial_setting(QWidget *parent) :
    uart_set.log_dir = QCoreApplication::applicationDirPath() + "/log";
    ui->lineEdit->setText(uart_set.log_dir);
 }
-
+void serial_setting::serial_transmit(QByteArray arr)
+{
+    m_serial->write(arr);
+}
 
 void serial_setting::handleError(QSerialPort::SerialPortError error)
 {
@@ -224,28 +230,38 @@ void serial_setting::on_pushButton_clicked()
         is_uart_open = false;
 
         ui->comboBox->setEnabled(true);
+        ui->checkBox_7->setEnabled(true);
+
         m_serial->close();
         emit show_message("关闭串口成功");
         ui->pushButton->setText("打开串口");
 
-        uart_set.log_file->close();
+        if(uart_set.is_log)
+        {
+            uart_set.log_file->close();
+        }
+
         return;
     }
 
-    if(QMessageBox::information(this, "提示", "进入日志模式?\r\n所有串口数据将被记录到日志文件中",
-                          QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes)
-    {
-        QDateTime current_date_time =QDateTime::currentDateTime();
-        QString current_date =current_date_time.toString("yyyy-MM-dd_hh-mm-ss-zzz");
+    //保存日志?
+    if(uart_set.is_log){
+        if(QMessageBox::information(this, "提示", "进入日志模式?\r\n所有串口数据将被记录到日志文件中",
+                              QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes)
+        {
+            QDateTime current_date_time =QDateTime::currentDateTime();
+            QString current_date =current_date_time.toString("yyyy-MM-dd_hh-mm-ss-zzz");
 
-        uart_set.log_file = new QFile(uart_set.log_dir + "/"+ current_date + ".log");
-        bool ret = uart_set.log_file->open(QIODevice::ReadWrite);
+            uart_set.log_file = new QFile(uart_set.log_dir + "/"+ current_date + ".log");
+            bool ret = uart_set.log_file->open(QIODevice::ReadWrite);
 
-        if(!ret){
-            QMessageBox::critical(this, "警告", "打开日志文件出错");
+            if(!ret){
+                QMessageBox::critical(this, "警告", "打开日志文件出错");
+            }
+
         }
-
     }
+
 
 
     m_serial->setPortName(infos.at(index).portName());
@@ -254,9 +270,13 @@ void serial_setting::on_pushButton_clicked()
 
 
     if (m_serial->open((QSerialPort::OpenMode)openmode)) {
+
+
         emit show_message("打开串口成功");
         ui->pushButton->setText("关闭串口");
-         ui->comboBox->setEnabled(false);
+
+        ui->checkBox_7->setEnabled(false);
+        ui->comboBox->setEnabled(false);
         is_uart_open = true;
         return;
     } else {
@@ -557,4 +577,38 @@ void serial_setting::on_pushButton_10_clicked()
     emit setting_charge_notif(v);
 
     is_open_cal = !is_open_cal;
+}
+
+void serial_setting::on_checkBox_7_stateChanged(int arg1)
+{
+    uart_set.is_log = ui->checkBox_7->isChecked();
+}
+
+void serial_setting::on_pushButton_12_clicked()
+{
+
+    if(QMessageBox::question(this, "警告", "确定删除所有的日志文件?") != QMessageBox::Yes)
+    {
+        return;
+    }
+
+    QString dirpath = uart_set.log_dir;
+    //设置要遍历的目录
+    QDir dir(dirpath);
+    //设置文件过滤器
+    QStringList nameFilters;
+    //设置文件过滤格式
+    nameFilters << "*.log";
+    //将过滤后的文件名称存入到files列表中
+    QStringList files = dir.entryList(nameFilters, QDir::Files|QDir::Readable, QDir::Name);
+
+
+
+    for(int i=0; i<files.length(); i++)
+    {
+        QFile *file = new QFile(uart_set.log_dir + "/" +   files[i]);
+        file->remove();
+    }
+
+    on_pushButton_11_clicked();
 }

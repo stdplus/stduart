@@ -13,6 +13,7 @@
 #include <QStandardItem>
 
 struct recv_setting{
+    bool is_suspend;
     bool is_ascii;
     bool is_hex;
     bool is_sn;
@@ -36,6 +37,8 @@ struct tools_setting{
 struct uart_setting{
     struct recv_setting recv_set;
     struct tools_setting tools_set;
+
+    bool is_log;
     QString log_dir;
     QFile *log_file;
     int log_mode;
@@ -60,6 +63,9 @@ signals:
 public:
     explicit serial_setting(QWidget *parent = nullptr);
     ~serial_setting();
+
+public slots:
+    void serial_transmit(QByteArray arr);
 
 private slots:
     void on_pushButton_clicked();
@@ -116,6 +122,10 @@ private slots:
     void on_pushButton_8_clicked();
 
     void on_pushButton_10_clicked();
+
+    void on_checkBox_7_stateChanged(int arg1);
+
+    void on_pushButton_12_clicked();
 
 private:
 

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_transmit_area_t {
-    QByteArrayData data[5];
-    char stringdata0[57];
+    QByteArrayData data[15];
+    char stringdata0[266];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,11 +36,26 @@ QT_MOC_LITERAL(0, 0, 13), // "transmit_area"
 QT_MOC_LITERAL(1, 14, 15), // "send_button_cmd"
 QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 3), // "cmd"
-QT_MOC_LITERAL(4, 35, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(4, 35, 20), // "setting_charge_notif"
+QT_MOC_LITERAL(5, 56, 15), // "serial_transmit"
+QT_MOC_LITERAL(6, 72, 3), // "arr"
+QT_MOC_LITERAL(7, 76, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(8, 98, 23), // "on_pushButton_3_clicked"
+QT_MOC_LITERAL(9, 122, 23), // "on_pushButton_4_clicked"
+QT_MOC_LITERAL(10, 146, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(11, 170, 23), // "on_pushButton_7_clicked"
+QT_MOC_LITERAL(12, 194, 23), // "on_pushButton_8_clicked"
+QT_MOC_LITERAL(13, 218, 23), // "on_pushButton_9_clicked"
+QT_MOC_LITERAL(14, 242, 23) // "on_pushButton_6_clicked"
 
     },
     "transmit_area\0send_button_cmd\0\0cmd\0"
-    "on_pushButton_clicked"
+    "setting_charge_notif\0serial_transmit\0"
+    "arr\0on_pushButton_clicked\0"
+    "on_pushButton_3_clicked\0on_pushButton_4_clicked\0"
+    "on_pushButton_2_clicked\0on_pushButton_7_clicked\0"
+    "on_pushButton_8_clicked\0on_pushButton_9_clicked\0"
+    "on_pushButton_6_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,23 +65,41 @@ static const uint qt_meta_data_transmit_area[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
+       1,    1,   69,    2, 0x06 /* Public */,
+       4,    1,   72,    2, 0x06 /* Public */,
+       5,    1,   75,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   27,    2, 0x08 /* Private */,
+       7,    0,   78,    2, 0x08 /* Private */,
+       8,    0,   79,    2, 0x08 /* Private */,
+       9,    0,   80,    2, 0x08 /* Private */,
+      10,    0,   81,    2, 0x08 /* Private */,
+      11,    0,   82,    2, 0x08 /* Private */,
+      12,    0,   83,    2, 0x08 /* Private */,
+      13,    0,   84,    2, 0x08 /* Private */,
+      14,    0,   85,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Short,    3,
+    QMetaType::Void, QMetaType::QVariant,    2,
+    QMetaType::Void, QMetaType::QByteArray,    6,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -79,7 +112,16 @@ void transmit_area::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->send_button_cmd((*reinterpret_cast< qint16(*)>(_a[1]))); break;
-        case 1: _t->on_pushButton_clicked(); break;
+        case 1: _t->setting_charge_notif((*reinterpret_cast< QVariant(*)>(_a[1]))); break;
+        case 2: _t->serial_transmit((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 3: _t->on_pushButton_clicked(); break;
+        case 4: _t->on_pushButton_3_clicked(); break;
+        case 5: _t->on_pushButton_4_clicked(); break;
+        case 6: _t->on_pushButton_2_clicked(); break;
+        case 7: _t->on_pushButton_7_clicked(); break;
+        case 8: _t->on_pushButton_8_clicked(); break;
+        case 9: _t->on_pushButton_9_clicked(); break;
+        case 10: _t->on_pushButton_6_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -88,6 +130,20 @@ void transmit_area::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             using _t = void (transmit_area::*)(qint16 );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&transmit_area::send_button_cmd)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (transmit_area::*)(QVariant );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&transmit_area::setting_charge_notif)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (transmit_area::*)(QByteArray );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&transmit_area::serial_transmit)) {
+                *result = 2;
                 return;
             }
         }
@@ -123,13 +179,13 @@ int transmit_area::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 11;
     }
     return _id;
 }
@@ -139,6 +195,20 @@ void transmit_area::send_button_cmd(qint16 _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void transmit_area::setting_charge_notif(QVariant _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void transmit_area::serial_transmit(QByteArray _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

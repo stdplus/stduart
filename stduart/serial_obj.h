@@ -37,7 +37,6 @@ signals:
 
 public slots:
     void sendmessage(QString str);
-    void setting_charged(QVariant );
 
 
 private slots:
