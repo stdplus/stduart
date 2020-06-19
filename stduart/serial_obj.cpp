@@ -190,12 +190,15 @@ serial_obj::serial_obj(QWidget *parent) :
    // connect(ui->textBrowser, &QTextEdit::cursorPositionChanged, this, &serial_obj::on_recvbrowser_cursorPositionChanged);
 
 
+
+
     //全局信号连接
     connect(ui->widget_setting,SIGNAL(show_message(QString )),this ,SLOT(sendmessage(QString)));
     connect(ui->widget_setting,SIGNAL(setting_charge_notif(QVariant )),ui->widget_recv ,SLOT(setting_charged(QVariant )));
     connect(ui->widget_transmit,SIGNAL(setting_charge_notif(QVariant )),ui->widget_recv ,SLOT(setting_charged(QVariant )));
 
     connect(ui->widget_setting,SIGNAL(recv_ready(QByteArray )),ui->widget_recv ,SLOT(recv(QByteArray)));
+    connect(ui->widget_setting,SIGNAL(recv_ready(QByteArray )),ui->widget_transmit ,SLOT(data_recv()));
 
     connect(ui->widget_transmit,SIGNAL(send_button_cmd(qint16)),ui->widget_recv ,SLOT(recv_buttom_cmd(qint16)));
     connect(ui->widget_transmit,SIGNAL(serial_transmit(QByteArray)), ui->widget_setting ,SLOT(serial_transmit(QByteArray)));

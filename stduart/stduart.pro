@@ -24,7 +24,8 @@ SOURCES += \
     serial_obj.cpp \
     serial_setting.cpp \
     tools_cal.cpp \
-    transmit_area.cpp
+    transmit_area.cpp \
+    transmit_log.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -33,7 +34,8 @@ HEADERS += \
     serial_obj.h \
     serial_setting.h \
     tools_cal.h \
-    transmit_area.h
+    transmit_area.h \
+    transmit_log.h
 
 FORMS += \
     mainwindow.ui \
@@ -42,7 +44,8 @@ FORMS += \
     serial_obj.ui \
     serial_setting.ui \
     tools_cal.ui \
-    transmit_area.ui
+    transmit_area.ui \
+    transmit_log.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

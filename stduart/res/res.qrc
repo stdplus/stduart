@@ -11,5 +11,7 @@
         <file>update.jpg</file>
         <file>zoomin.jpg</file>
         <file>zoomout.jpg</file>
+        <file>off.png</file>
+        <file>on.png</file>
     </qresource>
 </RCC>
